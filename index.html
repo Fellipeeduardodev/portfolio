@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- ── SEO METADATA ────────────────────────── -->
-  <title>< Fellipe /> — Front End Developer & UI/UX</title>
-  <meta name="description" content="Portfólio de Fellipe Eduardo, Desenvolvedor Front End e UI/UX Designer. Criação de interfaces web modernas, responsivas e de alta performance." />
-  <meta name="keywords" content="front end, developer, desenvolvedor, ui ux, figma, react, javascript, html, css, portfolio, landing page" />
-  
+  <title>
+    < Fellipe /> — Front End Developer & UI/UX
+  </title>
+  <meta name="description" content="Portfólio de Fellipe Eduardo, Desenvolvedor Front End e Designer UI/UX. Criação de interfaces web modernas, responsivas e de alta performance." />
+  <meta name="keywords" content="desenvolvedor front end, desenvolvedor, ui ux, figma, react, javascript, html, css, portfólio, página de apresentação" />
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="< Fellipe /> — Front End Developer & UI/UX" />
-  <meta property="og:description" content="Portfólio de Fellipe Eduardo, Desenvolvedor Front End e UI/UX Designer. Conheça meus projetos e serviços." />
+  <meta property="og:title" content="< Fellipe /> — Desenvolvedor Front End & UI/UX" />
+  <meta property="og:description" content="Portfólio de Fellipe Eduardo, Desenvolvedor Front End e Designer UI/UX. Conheça meus projetos e serviços." />
   <meta property="og:image" content="assets/images/profile.jpg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="< Fellipe /> — Front End Developer & UI/UX" />
-  <meta name="twitter:description" content="Portfólio de Fellipe Eduardo, Desenvolvedor Front End e UI/UX Designer." />
+  <meta name="twitter:title" content="< Fellipe /> — Desenvolvedor Front End & UI/UX" />
+  <meta name="twitter:description" content="Portfólio de Fellipe Eduardo, Desenvolvedor Front End e Designer UI/UX." />
   <meta name="twitter:image" content="assets/images/profile.jpg" />
+
+  <!-- ── FAVICON ───────────────────────────── -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png" />
 
   <!-- ── FLATICON UICONS ─────────────────────── -->
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css'>
@@ -31,11 +40,50 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
+
+  <!-- Page Transition Overlay -->
+  <div id="page-transition">
+    <div class="pt-logo">&lt;F/&gt;</div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-container"></div>
+
+  <!-- Hire Me Floating Button -->
+  <div id="hire-me-btn" title="Fala comigo!">
+    <span class="hire-me-dot"></span>
+    <span class="hire-me-text">me chame</span>
+  </div>
+
+  <!-- Hire Me Modal -->
+  <div id="hire-me-modal" class="hire-modal-overlay">
+    <div class="hire-modal">
+      <button class="hire-modal-close" id="hireMeClose">✕</button>
+      <p class="hire-modal-tag">// disponível para trabalho</p>
+      <h3 class="hire-modal-title">Vamos construir<br /><span>algo incrível?</span></h3>
+      <p class="hire-modal-sub">Respondo em menos de 24h. Escolha como prefere falar:</p>
+      <div class="hire-modal-links">
+        <a href="mailto:Fellipeeduardo1611@gmail.com" class="hire-modal-link" id="hmEmail">
+          <i class="fi fi-rr-envelope"></i> E-mail
+        </a>
+        <a href="https://wa.me/5511961131382" class="hire-modal-link" id="hmWhatsapp" target="_blank" rel="noopener noreferrer">
+          <i class="fi fi-brands-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://www.linkedin.com/in/fellipeedudev/" class="hire-modal-link" id="hmLinkedin" target="_blank" rel="noopener noreferrer">
+          <i class="fi fi-brands-linkedin"></i> LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cursor Trail -->
+  <canvas id="cursor-trail"></canvas>
 
   <!-- Scroll Progress Indicator -->
   <div id="scroll-progress"></div>
-  
+
   <!-- Interactive Custom Cursor -->
   <div id="cursor"></div>
 
@@ -43,7 +91,7 @@
   <nav id="navbar">
     <a href="#hero" class="nav-logo" id="navLogo">&lt;F/&gt;</a>
     <ul class="nav-links">
-      <li><a href="#hero" id="navLinkHome">Home</a></li>
+      <li><a href="#hero" id="navLinkHome">Início</a></li>
       <li><a href="#sobre" id="navLinkSobre">Sobre</a></li>
       <li><a href="#projetos" id="navLinkProjetos">Projetos</a></li>
       <li><a href="#servicos" id="navLinkServicos">Serviços</a></li>
@@ -59,7 +107,7 @@
 
   <!-- Mobile Dropdown Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#hero" id="mobLinkHome">Home</a>
+    <a href="#hero" id="mobLinkHome">Início</a>
     <a href="#sobre" id="mobLinkSobre">Sobre</a>
     <a href="#projetos" id="mobLinkProjetos">Projetos</a>
     <a href="#servicos" id="mobLinkServicos">Serviços</a>
@@ -70,16 +118,16 @@
        HERO
   ═══════════════════════════════════════════ -->
   <section id="hero">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-1" id="heroBlob1"></div>
+    <div class="hero-blob hero-blob-2" id="heroBlob2"></div>
     <div class="hero-grid">
 
       <div class="hero-left">
-        <div class="hero-available" id="heroAvailable">{ available for work }</div>
+        <div class="hero-available" id="heroAvailable">{ disponível para trabalho } &nbsp;<span id="liveTime" class="live-time"></span></div>
         <h1 class="hero-name" id="heroName">
           <span class="bracket">&lt;</span>Fellipe<span class="bracket">/&gt;</span>
         </h1>
-        <p class="hero-role" id="heroRole"><span class="comment">// </span>front end developer &amp; ui/ux designer</p>
+        <p class="hero-role" id="heroRole"><span class="comment">// </span><span id="typedText"></span><span class="type-cursor">|</span></p>
         <p class="hero-desc" id="heroDesc">
           Transformo ideias em interfaces que as pessoas amam usar.
           Do <span class="inline-code">design</span> ao <span class="inline-code">código</span>,
@@ -87,46 +135,46 @@
         </p>
         <div class="hero-btns">
           <a href="#projetos" class="btn-primary" id="heroBtnProjetos">Ver Projetos →</a>
-          <a href="#" class="btn-secondary" id="heroBtnCV">Download CV</a>
+          <a href="#" class="btn-secondary" id="heroBtnCV">Baixar CV</a>
         </div>
       </div>
 
       <div class="hero-right">
         <div class="hero-photo-wrap">
-          
+
           <!-- Floating Interactive Icons -->
           <div class="float-icon fi-html" title="HTML5">
             <svg viewBox="0 0 452 520" xmlns="http://www.w3.org/2000/svg">
-              <path d="M41 460L0 0h451l-41 460-185 52L41 460z" fill="#e34f26"/>
-              <path d="M226 472l149-41 35-394H226V472z" fill="#ef652a"/>
-              <path d="M226 208H151l-5-58h80V94H84l14 151h128v-37zm0 147l-1 1-64-17-4-45h-56l8 87 116 32 1-58z" fill="#fff"/>
-              <path d="M226 208v56h73l-7 74-66 18v58l117-32 9-97 9-77H226zm0-114v56h142l5-56H226z" fill="#fff"/>
+              <path d="M41 460L0 0h451l-41 460-185 52L41 460z" fill="#e34f26" />
+              <path d="M226 472l149-41 35-394H226V472z" fill="#ef652a" />
+              <path d="M226 208H151l-5-58h80V94H84l14 151h128v-37zm0 147l-1 1-64-17-4-45h-56l8 87 116 32 1-58z" fill="#fff" />
+              <path d="M226 208v56h73l-7 74-66 18v58l117-32 9-97 9-77H226zm0-114v56h142l5-56H226z" fill="#fff" />
             </svg>
           </div>
           <div class="float-icon fi-css" title="CSS3">
             <svg viewBox="0 0 452 520" xmlns="http://www.w3.org/2000/svg">
-              <path d="M41 460L0 0h451l-41 460-185 52L41 460z" fill="#0168b5"/>
-              <path d="M226 472l149-41 35-394H226V472z" fill="#33a9dc"/>
-              <path d="M226 324l-64-18-4-46h-56l8 87 116 33v-56zm0-116h65l-6 58-59 16v57l117-33 2-14 13-140 1-12H150l5 57h71v11z" fill="#fff"/>
-              <path d="M226 208v-57H84l5 57h137zm0 116v56l117-32 14-159H226v57h69l-5 60-64 18z" fill="#e2eaf0"/>
+              <path d="M41 460L0 0h451l-41 460-185 52L41 460z" fill="#0168b5" />
+              <path d="M226 472l149-41 35-394H226V472z" fill="#33a9dc" />
+              <path d="M226 324l-64-18-4-46h-56l8 87 116 33v-56zm0-116h65l-6 58-59 16v57l117-33 2-14 13-140 1-12H150l5 57h71v11z" fill="#fff" />
+              <path d="M226 208v-57H84l5 57h137zm0 116v56l117-32 14-159H226v57h69l-5 60-64 18z" fill="#e2eaf0" />
             </svg>
           </div>
           <div class="float-icon fi-js" title="JavaScript">
             <svg viewBox="0 0 630 630" xmlns="http://www.w3.org/2000/svg">
-              <rect width="630" height="630" fill="#f7df1e"/>
-              <path d="M423 492c10 18 24 31 47 31 20 0 33-10 33-23 0-16-13-22-35-31l-12-5c-35-15-58-33-58-72 0-36 27-63 70-63 30 0 52 11 68 38l-37 24c-8-15-17-21-30-21-14 0-22 9-22 21 0 14 9 20 29 29l12 5c41 18 64 35 64 76 0 43-34 67-80 67-45 0-74-21-88-49l38-27zm-170 4c7 13 14 24 30 24 15 0 25-6 25-29V302h48v192c0 47-28 69-68 69-37 0-58-19-69-42l34-25z"/>
+              <rect width="630" height="630" fill="#f7df1e" />
+              <path d="M423 492c10 18 24 31 47 31 20 0 33-10 33-23 0-16-13-22-35-31l-12-5c-35-15-58-33-58-72 0-36 27-63 70-63 30 0 52 11 68 38l-37 24c-8-15-17-21-30-21-14 0-22 9-22 21 0 14 9 20 29 29l12 5c41 18 64 35 64 76 0 43-34 67-80 67-45 0-74-21-88-49l38-27zm-170 4c7 13 14 24 30 24 15 0 25-6 25-29V302h48v192c0 47-28 69-68 69-37 0-58-19-69-42l34-25z" />
             </svg>
           </div>
           <div class="float-icon fi-figma" title="Figma">
             <svg viewBox="0 0 38 57" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#1abcfe"/>
-              <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 0 1-19 0z" fill="#0acf83"/>
-              <path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z" fill="#ff7262"/>
-              <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#f24e1e"/>
-              <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#a259ff"/>
+              <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#1abcfe" />
+              <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 0 1-19 0z" fill="#0acf83" />
+              <path d="M19 0v19h9.5a9.5 9.5 0 0 0 0-19H19z" fill="#ff7262" />
+              <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#f24e1e" />
+              <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#a259ff" />
             </svg>
           </div>
-          
+
           <div class="hero-photo-bg">
             <img src="assets/images/profile.jpg" alt="Fellipe Eduardo — Foto de perfil" id="heroProfileImg" />
           </div>
@@ -150,7 +198,7 @@
     <div class="inner">
       <p class="section-tag reveal">sobre mim</p>
       <h2 class="section-title reveal">// quem é <span>Fellipe</span></h2>
-      
+
       <div class="about-grid">
         <div class="about-photo-col">
           <div class="about-photo-frame reveal">
@@ -163,22 +211,17 @@
 
         <div class="about-text-col">
           <p class="about-intro reveal" id="aboutIntroText">
-            Oi, eu sou o Fellipe. Comecei no mundo do desenvolvimento pelo curso técnico do Senac e fui fundo na Origamid. Gosto de resolver problemas com código limpo e design que faz sentido — e acredito que a melhor interface é aquela que o usuário nem percebe que está usando.
+            Tenho 18 anos e sou apaixonado por tecnologia desde os 4 anos de idade. Sempre fui curioso para entender como as coisas funcionam, e foi essa curiosidade que me levou ao desenvolvimento web. Há 1 ano estudo programação e design de interfaces, buscando criar experiências modernas, funcionais e intuitivas através do código.
           </p>
           <div class="about-code reveal" id="aboutCodeSnippet">
-            const eu = &#123; criativo: true, curioso: true, cafe: Infinity &#125;
+            const fellipe = &#123; idade: 18, foco: "front end &amp; ui/ux", café: Infinity &#125;
           </div>
 
           <!-- Stats row -->
           <div class="about-stats reveal" id="aboutStatsRow">
             <div class="about-stat">
-              <span class="about-stat-num" data-target="3" id="statProjects">0</span><span class="about-stat-plus">+</span>
-              <span class="about-stat-label">Projetos<br>Entregues</span>
-            </div>
-            <div class="about-stat-divider"></div>
-            <div class="about-stat">
               <span class="about-stat-num" data-target="2" id="statCourses">0</span><span class="about-stat-plus">+</span>
-              <span class="about-stat-label">Cursos<br>Concluídos</span>
+              <span class="about-stat-label">Cursos<br>concluídos</span>
             </div>
             <div class="about-stat-divider"></div>
             <div class="about-stat">
@@ -202,13 +245,17 @@
             <h4 class="tl-title">Curso Técnico — Informática para Internet</h4>
             <p class="tl-sub">Senac | Onde tudo começou. Lógica, web, banco de dados e o primeiro <code class="inline-code">Hello World</code>.</p>
           </div>
-          <div class="timeline-dot-col"><div class="timeline-dot" id="tl-dot-0"></div></div>
+          <div class="timeline-dot-col">
+            <div class="timeline-dot" id="tl-dot-0"></div>
+          </div>
           <div class="timeline-right-empty"></div>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-left-empty"></div>
-          <div class="timeline-dot-col"><div class="timeline-dot" id="tl-dot-1"></div></div>
+          <div class="timeline-dot-col">
+            <div class="timeline-dot" id="tl-dot-1"></div>
+          </div>
           <div class="timeline-content right" id="tl-content-1">
             <p class="tl-tag">Origamid</p>
             <h4 class="tl-title">HTML &amp; CSS</h4>
@@ -222,7 +269,9 @@
             <h4 class="tl-title">JavaScript</h4>
             <p class="tl-sub">Dei vida às interfaces. Do DOM ao <code class="inline-code">fetch()</code>, cada função foi uma descoberta.</p>
           </div>
-          <div class="timeline-dot-col"><div class="timeline-dot" id="tl-dot-2"></div></div>
+          <div class="timeline-dot-col">
+            <div class="timeline-dot" id="tl-dot-2"></div>
+          </div>
           <div class="timeline-right-empty"></div>
         </div>
 
@@ -235,63 +284,195 @@
   ═══════════════════════════════════════════ -->
   <section id="projetos">
     <div class="inner">
-      <p class="section-tag reveal">portfolio</p>
+      <p class="section-tag reveal">portfólio</p>
       <h2 class="section-title reveal">// projetos <span>recentes</span></h2>
       <p class="section-sub reveal">Código que virou produto. Cada projeto, um problema resolvido.</p>
       <div class="projects-grid">
-        
+
         <div class="project-card reveal">
           <div class="project-thumb">
-            <span class="project-thumb-icon"><i class="fi fi-rr-desktop-wallpaper"></i></span>
+            <img class="project-thumb-img" src="assets/images/bikcraft.png" alt="Prévia Bikcraft" />
+            <span class="project-thumb-icon"><i class="fi fi-rr-bicycle"></i></span>
             <span class="project-thumb-num">01</span>
           </div>
           <div class="project-body">
-            <h3 class="project-title" id="p1Title">Projeto 01</h3>
-            <p class="project-desc" id="p1Desc">Descrição do projeto. O que ele faz, qual problema resolve e o que você aprendeu.</p>
+            <div class="project-badge">Bikcraft</div>
+            <h3 class="project-title" id="p1Title">Loja de Bicicletas</h3>
+            <p class="project-desc" id="p1Desc">Landing page responsiva para venda e apresentação de bicicletas layout, responsividade e microinterações.</p>
             <div class="project-tags">
               <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
             </div>
             <div class="project-links">
-              <a href="#" class="project-link" id="p1Github"><i class="fi fi-brands-github"></i> GitHub</a>
-              <a href="#" class="project-link" id="p1Live"><i class="fi fi-rr-arrow-up-right-from-square"></i> Live</a>
+              <a href="https://github.com/Fellipeeduardodev/bikcraft" class="project-link" id="p1Github" target="_blank" rel="noopener noreferrer"><i class="fi fi-brands-github"></i> GitHub</a>
+              <a href="https://fellipeeduardodev.github.io/bikcraft/" class="project-link" id="p1Live" target="_blank" rel="noopener noreferrer"><i class="fi fi-rr-arrow-up-right-from-square"></i> Ver online</a>
             </div>
           </div>
         </div>
 
         <div class="project-card reveal">
           <div class="project-thumb">
-            <span class="project-thumb-icon"><i class="fi fi-rr-mobile-notch"></i></span>
+            <img class="project-thumb-img" src="assets/images/snitap.png" alt="Prévia do projeto 02" />
+            <span class="project-thumb-icon"><i class="fi fi-rr-desktop-wallpaper"></i></span>
             <span class="project-thumb-num">02</span>
           </div>
           <div class="project-body">
-            <h3 class="project-title" id="p2Title">Projeto 02</h3>
-            <p class="project-desc" id="p2Desc">Descrição do projeto. O que ele faz, qual problema resolve e o que você aprendeu.</p>
+            <div class="project-badge">Snitap Patins</div>
+            <h3 class="project-title" id="p2Title">Landing Page de Patins</h3>
+            <p class="project-desc" id="p2Desc">Este projeto consiste na criação de uma landing page para divulgação de patins.</p>
             <div class="project-tags">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Figma</span>
+              <span class="tag">HTML</span><span class="tag">CSS</span>
             </div>
             <div class="project-links">
-              <a href="#" class="project-link" id="p2Github"><i class="fi fi-brands-github"></i> GitHub</a>
-              <a href="#" class="project-link" id="p2Live"><i class="fi fi-rr-arrow-up-right-from-square"></i> Live</a>
+              <a href="https://github.com/Fellipeeduardodev/projeto-lp-de-patins" class="project-link" id="p2Github" target="_blank" rel="noopener noreferrer"><i class="fi fi-brands-github"></i> GitHub</a>
+              <a href="https://fellipeeduardodev.github.io/projeto-lp-de-patins/" class="project-link" id="p2Live" target="_blank" rel="noopener noreferrer"><i class="fi fi-rr-arrow-up-right-from-square"></i> Ver online</a>
             </div>
           </div>
         </div>
 
         <div class="project-card reveal">
           <div class="project-thumb">
-            <span class="project-thumb-icon"><i class="fi fi-rr-palette"></i></span>
+            <img class="project-thumb-img" src="assets/images/portfolio-antigo.png" alt="Prévia do portfólio antigo" />
+            <span class="project-thumb-icon"><i class="fi fi-rr-desktop-wallpaper"></i></span>
             <span class="project-thumb-num">03</span>
           </div>
           <div class="project-body">
-            <h3 class="project-title" id="p3Title">Projeto 03</h3>
-            <p class="project-desc" id="p3Desc">Descrição do projeto. O que ele faz, qual problema resolve e o que você aprendeu.</p>
+            <div class="project-badge">Fellipe Eduardo | Portfólio Antigo</div>
+            <h3 class="project-title" id="p3Title">Portfólio</h3>
+            <p class="project-desc" id="p3Desc">Meu primeiro portfólio profissional, desenvolvido durante o curso da Origamid.</p>
             <div class="project-tags">
-              <span class="tag">JS</span><span class="tag">CSS</span><span class="tag">API</span>
+              <span class="tag">HTML</span><span class="tag">CSS</span>
             </div>
             <div class="project-links">
-              <a href="#" class="project-link" id="p3Github"><i class="fi fi-brands-github"></i> GitHub</a>
-              <a href="#" class="project-link" id="p3Live"><i class="fi fi-rr-arrow-up-right-from-square"></i> Live</a>
+              <a href="https://github.com/Fellipeeduardodev/fellipeportfolio" class="project-link" id="p3Github" target="_blank" rel="noopener noreferrer"><i class="fi fi-brands-github"></i> GitHub</a>
+              <a href="https://fellipeeduardodev.github.io/fellipeportfolio/" class="project-link" id="p3Live" target="_blank" rel="noopener noreferrer"><i class="fi fi-rr-arrow-up-right-from-square"></i> Ver online</a>
             </div>
           </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PROCESSO
+  ═══════════════════════════════════════════ -->
+  <section id="processo">
+    <div class="processo-pin-wrap" id="processoPinWrap">
+      <div class="processo-inner">
+
+        <div class="processo-header">
+          <p class="section-tag">como trabalho</p>
+          <h2 class="section-title">// meu <span>processo</span></h2>
+          <p class="processo-scroll-hint" id="processoHint"><span class="hint-arrow">↓</span> role para avançar</p>
+        </div>
+
+        <!-- SVG Road -->
+        <div class="processo-road-wrap">
+          <svg class="processo-road-svg" id="processoRoadSvg" viewBox="0 0 1100 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Fundo da estrada (cinza) -->
+            <path id="roadPathBg" d="M 0,80 C 80,80 120,30 200,30 C 280,30 320,130 400,130 C 480,130 520,30 600,30 C 680,30 720,130 800,130 C 880,130 920,30 1000,30 C 1040,30 1070,55 1100,80" fill="none" stroke="var(--border)" stroke-width="4" stroke-linecap="round" />
+            <!-- Tracejado central (marcação de pista) -->
+            <path id="roadDash" d="M 0,80 C 80,80 120,30 200,30 C 280,30 320,130 400,130 C 480,130 520,30 600,30 C 680,30 720,130 800,130 C 880,130 920,30 1000,30 C 1040,30 1070,55 1100,80" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="10 8" stroke-linecap="round" opacity="0.25" />
+            <!-- Progresso animado -->
+            <path id="roadPathFill" d="M 0,80 C 80,80 120,30 200,30 C 280,30 320,130 400,130 C 480,130 520,30 600,30 C 680,30 720,130 800,130 C 880,130 920,30 1000,30 C 1040,30 1070,55 1100,80" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" style="filter: drop-shadow(0 0 6px var(--accent-glow))" />
+          </svg>
+
+          <!-- Steps posicionados sobre a curva -->
+          <!-- road-wrap height=460px, svg centro=58% → y=58% = linha média -->
+          <!-- curva vai de y=80(centro) até y=30(topo) e y=130(base) no viewBox 160px -->
+          <!-- topo da curva  → no wrap: 58% - (80-30)/460*100 ≈ 47% -->
+          <!-- base da curva  → no wrap: 58% + (130-80)/460*100 ≈ 69% -->
+          <div class="processo-step" id="pstep-0" style="--sx: 18%; --sy: 69%;">
+            <div class="pstep-dot">
+              <div class="pstep-dot-inner"></div>
+            </div>
+            <div class="pstep-card pstep-card--up">
+              <div class="pstep-icon"><i class="fi fi-rr-comment-alt"></i></div>
+              <p class="pstep-num">01</p>
+              <h3 class="pstep-title">Briefing</h3>
+              <p class="pstep-desc">Entendo o projeto a fundo: público-alvo, objetivos e referências. Sem briefing claro, não existe bom resultado.</p>
+            </div>
+          </div>
+
+          <div class="processo-step" id="pstep-1" style="--sx: 36%; --sy: 47%;">
+            <div class="pstep-dot">
+              <div class="pstep-dot-inner"></div>
+            </div>
+            <div class="pstep-card pstep-card--down">
+              <div class="pstep-icon"><i class="fi fi-rr-pen-nib"></i></div>
+              <p class="pstep-num">02</p>
+              <h3 class="pstep-title">UI Design</h3>
+              <p class="pstep-desc">Wireframe e protótipo no Figma. Cada tela pensada antes de escrever uma linha de código.</p>
+            </div>
+          </div>
+
+          <div class="processo-step" id="pstep-2" style="--sx: 55%; --sy: 47%;">
+            <div class="pstep-dot">
+              <div class="pstep-dot-inner"></div>
+            </div>
+            <div class="pstep-card pstep-card--up">
+              <div class="pstep-icon"><i class="fi fi-rr-code-simple"></i></div>
+              <p class="pstep-num">03</p>
+              <h3 class="pstep-title">Código</h3>
+              <p class="pstep-desc">HTML semântico, CSS moderno e JS limpo. Mobile-first desde o primeiro elemento.</p>
+            </div>
+          </div>
+
+          <div class="processo-step" id="pstep-3" style="--sx: 73%; --sy: 69%;">
+            <div class="pstep-dot">
+              <div class="pstep-dot-inner"></div>
+            </div>
+            <div class="pstep-card pstep-card--down">
+              <div class="pstep-icon"><i class="fi fi-rr-rocket"></i></div>
+              <p class="pstep-num">04</p>
+              <h3 class="pstep-title">Entrega</h3>
+              <p class="pstep-desc">Testes em dispositivos reais, ajustes finais e deploy. O projeto só termina quando está rodando.</p>
+            </div>
+          </div>
+
+        </div><!-- /processo-road-wrap -->
+
+        <!-- MOBILE FALLBACK (só aparece em telas pequenas) -->
+        <div class="processo-mobile-list">
+          <div class="pmob-item">
+            <div class="pmob-dot"><span>01</span></div>
+            <div class="pmob-content">
+              <div class="pstep-icon"><i class="fi fi-rr-comment-alt"></i></div>
+              <h3 class="pstep-title">Briefing</h3>
+              <p class="pstep-desc">Entendo o projeto a fundo: público-alvo, objetivos e referências. Sem briefing claro, não existe bom resultado.</p>
+            </div>
+          </div>
+          <div class="pmob-item">
+            <div class="pmob-dot"><span>02</span></div>
+            <div class="pmob-content">
+              <div class="pstep-icon"><i class="fi fi-rr-pen-nib"></i></div>
+              <h3 class="pstep-title">UI Design</h3>
+              <p class="pstep-desc">Wireframe e protótipo no Figma. Cada tela pensada antes de escrever uma linha de código.</p>
+            </div>
+          </div>
+          <div class="pmob-item">
+            <div class="pmob-dot"><span>03</span></div>
+            <div class="pmob-content">
+              <div class="pstep-icon"><i class="fi fi-rr-code-simple"></i></div>
+              <h3 class="pstep-title">Código</h3>
+              <p class="pstep-desc">HTML semântico, CSS moderno e JS limpo. Mobile-first desde o primeiro elemento.</p>
+            </div>
+          </div>
+          <div class="pmob-item">
+            <div class="pmob-dot"><span>04</span></div>
+            <div class="pmob-content">
+              <div class="pstep-icon"><i class="fi fi-rr-rocket"></i></div>
+              <h3 class="pstep-title">Entrega</h3>
+              <p class="pstep-desc">Testes em dispositivos reais, ajustes finais e deploy. O projeto só termina quando está rodando.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="processo-progress-dots" id="processoDots">
+          <span class="pdot active" data-step="0"></span>
+          <span class="pdot" data-step="1"></span>
+          <span class="pdot" data-step="2"></span>
+          <span class="pdot" data-step="3"></span>
         </div>
 
       </div>
@@ -307,7 +488,7 @@
       <h2 class="section-title reveal">// <span>serviços</span></h2>
       <p class="section-sub reveal">Transformo <span class="inline-code">design</span> em <span class="inline-code">código</span> — e <span class="inline-code">código</span> em experiência.</p>
       <div class="services-grid">
-        
+
         <div class="service-card reveal">
           <div class="service-icon"><i class="fi fi-rr-code-simple"></i></div>
           <h3 class="service-title" id="s1Title">Desenvolvimento Front End</h3>
@@ -344,22 +525,25 @@
             <code>console.log('me chama')</code>
           </p>
           <div class="contact-links">
-            <a href="mailto:fellipe@email.com" class="contact-link reveal" id="contactEmail">
-              <span class="contact-link-icon"><i class="fi fi-rr-envelope"></i></span>fellipe@email.com
+            <a href="mailto:Fellipeeduardo1611@gmail.com" class="contact-link reveal" id="contactEmail" data-copy="Fellipeeduardo1611@gmail.com">
+              <span class="contact-link-icon"><i class="fi fi-rr-envelope"></i></span><span id="emailText">Fellipeeduardo1611@gmail.com</span>
             </a>
-            <a href="#" class="contact-link reveal" id="contactLinkedin">
+            <a href="https://www.linkedin.com/in/fellipeedudev/" class="contact-link reveal" id="contactLinkedin" target="_blank" rel="noopener noreferrer">
               <span class="contact-link-icon"><i class="fi fi-brands-linkedin"></i></span>LinkedIn
             </a>
-            <a href="#" class="contact-link reveal" id="contactGithub">
+            <a href="https://github.com/Fellipeeduardodev" class="contact-link reveal" id="contactGithub" target="_blank" rel="noopener noreferrer">
               <span class="contact-link-icon"><i class="fi fi-brands-github"></i></span>GitHub
             </a>
-            <a href="#" class="contact-link reveal" id="contactWhatsapp">
+            <a href="https://wa.me/5511961131382" class="contact-link reveal" id="contactWhatsapp" target="_blank" rel="noopener noreferrer">
               <span class="contact-link-icon"><i class="fi fi-brands-whatsapp"></i></span>WhatsApp
+            </a>
+            <a href="https://www.instagram.com/fellipe_zxz" class="contact-link reveal" id="contactInstagram" target="_blank" rel="noopener noreferrer">
+              <span class="contact-link-icon"><i class="fi fi-brands-instagram"></i></span>Instagram
             </a>
           </div>
         </div>
-        
-        <form class="contact-form" onsubmit="handleSubmit(event)" id="contactForm">
+
+        <form class="contact-form" onsubmit="handleSubmit(event)" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group reveal">
               <label for="formName">Nome</label>
@@ -393,7 +577,7 @@
     <div class="footer-logo" id="footerLogo">&lt;F/&gt;</div>
     <p class="footer-tagline">// feito com &lt;/&gt; e muito café</p>
     <div class="footer-links">
-      <a href="#hero" id="footerLinkHome">Home</a>
+      <a href="#hero" id="footerLinkHome">Início</a>
       <a href="#projetos" id="footerLinkProjetos">Projetos</a>
       <a href="#sobre" id="footerLinkSobre">Sobre</a>
       <a href="#contato" id="footerLinkContato">Contato</a>
@@ -404,4 +588,5 @@
   <!-- ── SCRIPTS ─────────────────────────────── -->
   <script src="js/main.js" defer></script>
 </body>
+
 </html>
