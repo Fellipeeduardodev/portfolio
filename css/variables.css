@@ -1,0 +1,93 @@
+/* ── IMPORT DE FONTES ─────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+
+/* ── RESET ───────────────────────────────── */
+*, *::before, *::after { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+/* ── THEMES ──────────────────────────────── */
+[data-theme="dark"] {
+  --bg: #0d0d0d; 
+  --bg2: #111; 
+  --surface: #1a1a1a; 
+  --surface2: #222;
+  --border: rgba(255, 255, 255, 0.08); 
+  --text: #f0f0f0; 
+  --text2: #888;
+  --accent: #7eb8f7; 
+  --accent-dim: rgba(126, 184, 247, 0.12);
+  --accent-glow: rgba(126, 184, 247, 0.28); 
+  --shadow: rgba(0, 0, 0, 0.5);
+  --card-bg: #161616; 
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --nav-pill: rgba(20, 20, 20, 0.85);
+  --btn-text: #0d0d0d;
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc; 
+  --bg2: #f1f5f9; 
+  --surface: #ffffff; 
+  --surface2: #f8fafc;
+  --border: rgba(15, 23, 42, 0.06); 
+  --text: #0f172a; 
+  --text2: #475569;
+  --accent: #2563eb; 
+  --accent-dim: rgba(37, 99, 235, 0.08);
+  --accent-glow: rgba(37, 99, 235, 0.18); 
+  --shadow: rgba(15, 23, 42, 0.04);
+  --card-bg: #ffffff; 
+  --input-bg: #f8fafc;
+  --nav-pill: rgba(255, 255, 255, 0.85);
+  --btn-text: #ffffff;
+}
+
+body {
+  font-family: 'Syne', sans-serif;
+  cursor: none;
+  overflow-x: hidden;
+  background: var(--bg); 
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+
+}
+
+/* ── SCROLL PROGRESS ─────────────────────── */
+#scroll-progress {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  height: 3px; 
+  width: 0%;
+  background: var(--accent); 
+  z-index: 9999;
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: width 0.1s linear;
+}
+
+/* ── UTILITIES & HELPERS ─────────────────── */
+.inline-code {
+  color: var(--accent); 
+  background: var(--accent-dim);
+  padding: 1px 6px; 
+  border-radius: 4px;
+  font-family: monospace; 
+  font-size: 0.88em;
+}
+
+.reveal { 
+  opacity: 0; 
+  transform: translateY(36px); 
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.75); }
+}

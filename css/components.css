@@ -1,0 +1,536 @@
+/* ── CURSOR ──────────────────────────────── */
+#cursor {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.2s,
+    height 0.2s,
+    background 0.2s,
+    border 0.2s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#cursor.hover {
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: 2px solid var(--accent);
+}
+
+@media (hover: none) {
+  #cursor {
+    display: none;
+  }
+  body {
+    cursor: auto;
+  }
+}
+
+/* ── NAVBAR PILL ─────────────────────────── */
+nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: auto;
+  max-width: calc(100vw - 32px);
+  padding: 0 1.6rem;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  background: var(--nav-pill);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow:
+    0 8px 32px var(--shadow),
+    0 0 0 1px var(--border);
+  transition:
+    background 0.3s,
+    box-shadow 0.3s;
+}
+
+nav.scrolled {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px var(--accent-glow);
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.theme-toggle {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-glow);
+  color: var(--text);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+  color: var(--btn-text);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* Mobile dropdown */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--nav-pill);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.2rem 1.8rem;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 999;
+  min-width: 200px;
+  box-shadow: 0 16px 40px var(--shadow);
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.mobile-menu a:hover {
+  color: var(--accent);
+}
+
+/* ── BUTTONS ─────────────────────────────── */
+.btn-primary {
+  background: var(--accent);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 10px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.8rem 1.8rem;
+  border-radius: 10px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── FLOATING ICONS ──────────────────────── */
+.float-icon {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px var(--shadow);
+  animation: floatUp var(--dur, 4s) ease-in-out infinite var(--delay, 0s);
+  z-index: 3;
+}
+
+.float-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.fi-html {
+  top: -18px;
+  left: -22px;
+  --dur: 3.8s;
+  --delay: 0s;
+}
+.fi-css {
+  bottom: 70px;
+  left: -28px;
+  --dur: 4.3s;
+  --delay: 0.6s;
+}
+.fi-js {
+  top: 24px;
+  right: -22px;
+  --dur: 3.5s;
+  --delay: 1s;
+}
+.fi-figma {
+  bottom: -8px;
+  right: 24px;
+  --dur: 4.6s;
+  --delay: 0.3s;
+}
+.fi-react {
+  top: 12px;
+  right: -10px;
+  --dur: 4.2s;
+  --delay: 0.4s;
+}
+
+@keyframes floatUp {
+  0%,
+  100% {
+    transform: translateY(0) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotateY(180deg);
+  }
+}
+
+/* ── TICKER STRIP ────────────────────────── */
+.ticker-strip {
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem 0;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+/* No modo claro, deixar os ícones da ticker mais escuros para melhor contraste */
+[data-theme="light"] .ticker-item i {
+  color: var(--text);
+  opacity: 0.95;
+}
+
+.ticker-strip::before,
+.ticker-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ticker-strip::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg2), transparent);
+}
+.ticker-strip::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg2), transparent);
+}
+
+.ticker-track {
+  display: flex;
+  gap: 2.8rem;
+  align-items: center;
+  width: max-content;
+  animation: ticker 28s linear infinite;
+}
+
+.ticker-track:hover {
+  /* Não pausar on hover — manter animação infinita */
+  animation-play-state: running;
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+
+.ticker-item:hover {
+  opacity: 1;
+}
+
+.ticker-item svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* Ensure inline SVG icons inherit accent color */
+.ticker-item svg,
+.project-thumb-icon svg,
+.project-link svg,
+.contact-link-icon svg,
+.service-icon svg,
+.theme-toggle .theme-icon {
+  color: var(--accent);
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* imagens/SVGs carregadas externamente (Heroicons via <img>) */
+.ticker-item .ticker-svg {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+  /* Allow coloring via currentColor when SVG is inlined and uses currentColor */
+  color: var(--accent);
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Garantir cor visível para ícones na ticker strip (Flaticon usa <i> tags) */
+.ticker-item i {
+  color: var(--accent);
+  opacity: 1;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ticker-item i::before {
+  color: inherit;
+}
+
+.ticker-item span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text2);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.ticker-sep {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+
+/* ── TIMELINE ────────────────────────────── */
+.timeline-section-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 3rem;
+}
+
+.timeline-wrap {
+  position: relative;
+  padding: 1rem 0 2rem;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 0%;
+  background: var(--accent);
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  gap: 0;
+  margin-bottom: 2.8rem;
+  position: relative;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-content {
+  padding: 1.4rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  opacity: 0;
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.timeline-content.left {
+  transform: translateX(24px);
+  text-align: right;
+}
+.timeline-content.right {
+  transform: translateX(-24px);
+}
+.timeline-content.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-dot-col {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 1.4rem;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  flex-shrink: 0;
+  transform: scale(0);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.timeline-dot.visible {
+  transform: scale(1);
+}
+
+.tl-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.tl-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.tl-sub {
+  font-size: 0.8rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
