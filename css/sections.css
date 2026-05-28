@@ -247,8 +247,14 @@ section {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  align-items: start;
+}
+
+/* Ensure cards don't force grid to break (prevent overflow) */
+.projects-grid .project-card {
+  min-width: 0;
 }
 
 .project-card {
@@ -1105,7 +1111,7 @@ footer {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
