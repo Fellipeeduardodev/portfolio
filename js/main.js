@@ -593,12 +593,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// ── FORM SUBMISSION HANDLER (Formspree)
-// ⚠️  IMPORTANTE: Substitua "YOUR_FORMSPREE_ID" pelo seu endpoint real.
-// Como obter: acesse https://formspree.io, crie uma conta gratuita,
-// crie um novo form e copie o ID (ex: "xpwzabcd").
-// Troque a linha abaixo por: const FORMSPREE_ENDPOINT = "https://formspree.io/f/SEU_ID";
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORMSPREE_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkoekboy";
 
 async function handleSubmit(e) {
   e.preventDefault();
